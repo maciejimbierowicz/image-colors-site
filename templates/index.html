@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Colour Pallette</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/static/css/styles.css">
+</head>
+<body>
+    <h1>Image Color Palette</h1>
+    {% if not filename %}
+        <h4>Upload an image and click submit</h4>
+    {% else %}
+        <h4>Successfully uploaded image</h4>
+    {% endif %}
+    <p>
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        {% for message in messages %}
+        <p class="message">{{ message }}</p>
+        {% endfor %}
+
+    {% endif %}
+    {% endwith %}
+    </p>
+    {% if filename %}
+    <div>
+        <img class="image" src="{{ url_for('display_image', filename=filename) }}">
+        <h4>Color palette:</h4>
+        <div class="palette">
+            {% for colour in colours %}
+            <div style="background-color: {{colour}};">{{colour}}</div>
+            {% endfor %}
+        </div>
+    </div>
+    <form action='/' method='POST'>
+        <button class="btn btn-primary refresh-button"><span class="glyphicon glyphicon-refresh"></span> Refresh</button>
+    </form>
+    {% else %}
+    <div class="add-image">
+        <form method="post" action="/" enctype="multipart/form-data">
+            <dl>
+                <p>
+                    <input type="file" name="file" class="form-control upload" autocomplete="off" required>
+                </p>
+            </dl>
+            <p>
+                <input type="submit" value="Submit" class="btn btn-info">
+            </p>
+        </form>
+    </div>
+    {% endif %}
+
+    <footer>
+        <p>Created by Imbir</p>
+    </footer>
+</body>
+</html>

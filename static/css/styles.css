@@ -1,0 +1,51 @@
+body {
+    padding-top: 5%;
+    text-align: center;
+    background-color: #7EA8BE;
+    color: #6D2E46;
+    font-family: 'Dancing Script', cursive;
+}
+
+footer {
+    padding: 20px auto;
+}
+
+h1 {
+    margin: 20px auto;
+    font-size: 4.5rem
+}
+
+h4, p {
+    margin: 20px auto;
+}
+
+.add-image {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+}
+
+.image {
+   padding-bottom: 20px;
+   max-width: 40%;
+   height: auto;
+}
+
+.message {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.palette {
+    max-width: 20%;
+    text-align: center;
+    border: solid;
+    margin: 0 auto;
+}
+
+.refresh-button {
+    margin: 10px auto;
+}
+
+.upload {
+    font-family: Arial, Helvetica, sans-serif;
+}
